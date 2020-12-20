@@ -107,6 +107,8 @@ class LinkedList:
             prev_node = node
             node = next_node
         self.head = prev_node
+
+        
 # Create a linked list
 linked_list = LinkedList(["a", "b", "c"])
 linked_list.add_first(Node("d"))
