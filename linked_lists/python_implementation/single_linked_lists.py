@@ -82,6 +82,19 @@ class LinkedList:
             prev_node = current_node
         raise Exception("target data not found")
 
+    def remove_first(self):
+        if not self.head:
+            raise Exception("List is empty")
+        self.head = self.head.next
+
+    def remove_last(self):
+        if not self.head:
+            raise Exception("List is empty")
+        prev_node = self.head
+        for current_node in self:
+            if current_node.next is not None:
+                prev_node = current_node
+        prev_node.next = None
 
 # Create a linked list
 linked_list = LinkedList(["a", "b", "c"])
@@ -91,6 +104,9 @@ linked_list.add_after("b", Node("f"))
 linked_list.add_before("b", Node("z"))
 print(linked_list)
 linked_list.remove_node("z")
+linked_list.remove_first()
+print(linked_list)
+linked_list.remove_last()
 # linked_list.add_after("z", Node("f")) ### raise Exception
 print(linked_list)
 # for node in linked_list:
