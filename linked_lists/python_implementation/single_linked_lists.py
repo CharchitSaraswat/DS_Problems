@@ -96,6 +96,17 @@ class LinkedList:
                 prev_node = current_node
         prev_node.next = None
 
+    def reverse_list(self):
+        if not self.head:
+            raise Exception("List is Empty")
+        prev_node = None
+        node = self.head
+        while node is not None:
+            next_node = node.next
+            node.next = prev_node
+            prev_node = node
+            node = next_node
+        self.head = prev_node
 # Create a linked list
 linked_list = LinkedList(["a", "b", "c"])
 linked_list.add_first(Node("d"))
@@ -108,6 +119,8 @@ linked_list.remove_first()
 print(linked_list)
 linked_list.remove_last()
 # linked_list.add_after("z", Node("f")) ### raise Exception
+print(linked_list)
+linked_list.reverse_list()
 print(linked_list)
 # for node in linked_list:
 #     print(node)
