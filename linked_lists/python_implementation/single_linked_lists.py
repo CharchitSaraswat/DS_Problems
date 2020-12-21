@@ -2,7 +2,7 @@ class Node:
     def __init__(self, data, next=None):
         self.data = data
         self.next = next
-    
+
     def __repr__(self):
         return self.data
 
@@ -30,7 +30,7 @@ class LinkedList:
         while node is not None:
             yield node
             node = node.next
-    
+
     def add_first(self, node):
         node.next = self.head
         self.head = node
@@ -108,7 +108,7 @@ class LinkedList:
             node = next_node
         self.head = prev_node
 
-        
+
 # Create a linked list
 linked_list = LinkedList(["a", "b", "c"])
 linked_list.add_first(Node("d"))
@@ -126,4 +126,3 @@ linked_list.reverse_list()
 print(linked_list)
 # for node in linked_list:
 #     print(node)
-
