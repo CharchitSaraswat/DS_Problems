@@ -7,7 +7,7 @@ class Node:
     def __repr__(self):
         return self.data
 
-class LinkedList:
+class DoubleLinkedList:
     def __init__(self, nodes=None):
         self.head = None
         if nodes is not None:
@@ -125,7 +125,7 @@ class LinkedList:
             node = next_node
         self.head = prev_node.prev
 
-linked_list = LinkedList(["a", "b", "c"])
+linked_list = DoubleLinkedList(["a", "b", "c"])
 linked_list.add_first(Node("d"))
 linked_list.add_last(Node("e"))
 linked_list.remove_first()
