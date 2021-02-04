@@ -4,6 +4,16 @@ class Node:
         self.left = None
         self.right = None
 
+    def level_order_traversal(self, root_ptr):
+        queue = list()
+        queue.append(root_ptr)
+        while len(queue) > 0:
+            node = queue.pop(0)
+            if node:
+                print(node.data)
+                queue.append(node.left)
+                queue.append(node.right)
+
     def in_order(self):
         if self.left is not None:
             self.left.in_order()
@@ -77,6 +87,8 @@ root.insert_node(70)
 root.insert_node(60)
 root.insert_node(80)
 root.in_order()
+print("*********")
+root.level_order_traversal(root_ptr)
 print("*********")
 root.delete_node(root_ptr, 20)
 root.in_order()
