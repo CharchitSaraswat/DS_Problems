@@ -21,6 +21,18 @@ class Node:
         if self.right is not None:
             self.right.in_order()
 
+    def max_height(self, node):
+        if node == None:
+            return 0
+        l_height = self.max_height(node.left)
+        r_height = self.max_height(node.right)
+        if l_height > r_height:
+            l_height += 1
+            return l_height
+        else:
+            r_height += 1
+            return r_height
+
     def insert_node(self, data):
         if data < self.data:
             if self.left is None:
@@ -86,6 +98,7 @@ root.insert_node(40)
 root.insert_node(70)
 root.insert_node(60)
 root.insert_node(80)
+print(root.max_height(root_ptr))
 root.in_order()
 print("*********")
 root.level_order_traversal(root_ptr)
