@@ -58,47 +58,45 @@ class RedBlackTree():
         if node.parent == None:
             self.root = y
         elif node == node.parent.left:
-            node.left.parent = y
+            node.parent.left = y
         else:
-            node.right.parent = y
+            node.parent.right = y
         y.right = node
         node.parent = y
 
     def fix_tree_insert(self, node):
-        parent = node.parent
-        grandparent = node.parent.parent
-        while parent.color == 1:
+        while node.parent.color == 1:
             # if parent is the right-side child of the grandparent
-            if parent == grandparent.right:
-                uncle = grandparent.left
+            if node.parent == node.parent.parent.right:
+                uncle = node.parent.parent.left
                 if uncle.color == 1:
-                    #set grandparent to red. Set uncle and parent to black
-                    grandparent.color = 1
+                    #set node.parent.parent to red. Set uncle and parent to black
+                    node.parent.parent.color = 1
                     uncle.color = 0
-                    parent.color = 0
-                    node = grandparent
+                    node.parent.color = 0
+                    node = node.parent.parent
                 else:
                     # if uncle is set to black
-                    if node == parent.left:
-                        node = parent
+                    if node == node.parent.left:
+                        node = node.parent
                         self.right_rotate(node)
-                    parent.color = 0
-                    grandparent.color = 1
-                    self.left_rotate(grandparent)
+                    node.parent.color = 0
+                    node.parent.parent.color = 1
+                    self.left_rotate(node.parent.parent)
             else:
-                uncle = grandparent.right
+                uncle = node.parent.parent.right
                 if uncle.color == 1:
-                    grandparent.color = 1
+                    node.parent.parent.color = 1
                     uncle.color = 0
-                    parent.color = 0
-                    node = grandparent
+                    node.parent.color = 0
+                    node = node.parent.parent
                 else:
-                    if node == parent.right:
-                        node = parent
+                    if node == node.parent.right:
+                        node = node.parent
                         self.left_rotate(node)
-                    parent.color = 0
-                    grandparent.color = 1
-                    self.right_rotate(grandparent)
+                    node.parent.color = 0
+                    node.parent.parent.color = 1
+                    self.right_rotate(node.parent.parent)
             if node == self.root:
                 break
         self.root.color = 0
